@@ -1,7 +1,5 @@
-FROM centos:7
+FROM alpine:3.12
 
-ADD ./bin/echo-all /usr/local/bin/echo-all
-
-RUN setcap cap_net_raw=+ep /usr/local/bin/echo-all
+COPY bin/echo-all /usr/local/bin/echo-all
 
 CMD ["/usr/local/bin/echo-all"]

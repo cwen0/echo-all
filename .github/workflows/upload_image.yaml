@@ -2,14 +2,15 @@ name: Upload Image
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build-specific-architecture:
     strategy:
       matrix:
         arch: [amd64, arm64]
-    runs-on: ${{ fromJson('{"amd64":"ubuntu-latest", "arm64":["self-hosted", "Linux", "ARM64"]}')[matrix.arch] }}
+    #runs-on: ${{ fromJson('{"amd64":"ubuntu-latest", "arm64":["self-hosted", "Linux", "ARM64"]}')[matrix.arch] }}
+    runs-on: ubuntu-latest
     steps:
       - name: checkout codes
         uses: actions/checkout@v2

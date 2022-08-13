@@ -39,9 +39,9 @@ func (rl requestLogger) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	var port int
-	flag.IntVar(&port, "port", 8000, "Port to listen on")
+	flag.IntVar(&port, "port", 8082, "Port to listen on")
 
 	fmt.Printf("Starting request echo server on port %v\n", port)
-	err := http.ListenAndServe(fmt.Sprintf("127.0.0.1:%v", port), requestLogger{})
+	err := http.ListenAndServe(fmt.Sprintf("0.0.0.0:%v", port), requestLogger{})
 	fmt.Printf("Server error: %v\n", err)
 }

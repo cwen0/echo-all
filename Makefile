@@ -14,10 +14,10 @@ build:
 	$(GO) build -o bin/echo-all *.go
 
 image:
-	docker build -t ${DOCKER_REGISTRY_PREFIX}chaos-mesh/echo-all:${IMAGE_TAG} .
+	docker build -t ${DOCKER_REGISTRY_PREFIX}cwen0/echo-all:${IMAGE_TAG} .
 
 image-push:
-	docker push  "${DOCKER_REGISTRY_PREFIX}chaos-mesh/echo-all:${IMAGE_TAG}"
+	docker push  "${DOCKER_REGISTRY_PREFIX}cwen0/echo-all:${IMAGE_TAG}"
 
 
 .PYTHON: build

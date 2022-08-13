@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: echo-all
+  labels:
+    app: echo-all
+spec:
+  selector:
+    app: echo-all
+  ports:
+    - protocol: TCP
+      port: 8082
+      targetPort: 8082
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echo-all
+  labels:
+    app: echo-all
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: echo-all
+  template:
+    metadata:
+      labels:
+        app: echo-all
+    spec:
+      containers:
+        - name: echo-all
+          image: ghcr.io/cwen0/echo-all:latest
+          imagePullPolicy: Always
+          command:
+            - /usr/local/bin/echo-all
+          ports:
+            - name: echo-all-port
+              containerPort: 8082
+              #hostPort: 8082
